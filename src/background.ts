@@ -62,6 +62,18 @@ namespace task {
             xhr.send()
         })        
     }
+
+    export function registContextMenu() {
+        chrome.contextMenus.create({
+            "title": "暂存链接",
+            "contexts": ["page"],
+            onclick: () => {
+                storeCurLink()
+            }
+        }, () => {
+            console.log("Successful page link context menu")
+        })
+    }
 }
 
 registBackgroundHandler({
@@ -70,17 +82,9 @@ registBackgroundHandler({
 })
 
 // listeners
-chrome.runtime.onInstalled.addListener(() => {
-    chrome.contextMenus.create({
-        "title": "暂存链接",
-        "contexts": ["page"],
-        onclick: () => {
-            task.storeCurLink()
-        }
-    }, () => {
-        console.log("Successful page link context menu")
-    })
-})
+chrome.runtime.onInstalled.addListener(task.registContextMenu)
+
+chrome.runtime.onStartup.addListener(task.registContextMenu)
 
 chrome.tabs.onActivated.addListener(() => {
     notifyContent("awake", {})
