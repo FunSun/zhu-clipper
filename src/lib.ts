@@ -48,7 +48,7 @@ function registHandler(type: string, handlers: {[key:string]:(msg:any)=>void}) {
 
     })
 }
-function getZhihuContent () {
+export function getZhihuContent () {
     // let from = window.location.href
     // let title = $('main h1')[0].innerText
     // let tags = $('.TopicLink div div').map(function () { return this.innerText}).get()

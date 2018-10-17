@@ -35,7 +35,9 @@ namespace task {
                 xhr.send(JSON.stringify({
                     url: url,
                     title: title,
-                    favicon: favicon
+                    favicon: favicon,
+                    tags: ["未处理"]
+                    
                 }))
             }
             xhr.send()
