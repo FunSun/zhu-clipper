@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.2] - 2018-10-17
+### Added
+- 储存旧代码
+
 ## [1.0.1] - 2018-10-06
 ### Fixed
 - 修复了右键菜单重启浏览器消失的问题
