@@ -75,12 +75,42 @@ namespace task {
         }, () => {
             console.log("Successful page link context menu")
         })
+        chrome.contextMenus.create({
+            "title": "剪藏内容",
+            "contexts": ["page"],
+            onclick: () => {
+                notifyContent("clip", {})
+            }
+        }, () => {
+            console.log("Successful page link context menu")
+        })
+    }
+
+    export function clipPage(msg:any) {
+        let xhr = new XMLHttpRequest()
+        xhr.open("POST", "http://localhost:8070/resources/blog" )
+        xhr.onreadystatechange = (ev) => {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    showDialog("保存成功")
+                }　else {
+                    showDialog("失败")
+                }
+            }
+        }
+        xhr.onerror = (err) => {
+            showDialog("发生错误")    
+            console.log(err)
+        }
+        xhr.send(JSON.stringify(msg))
     }
 }
 
 registBackgroundHandler({
     'refreshCurrent': (msg) => {task.refreshCurrent(msg.title, msg.url)},
-    'isPageArchived': task.isCurrentPageArchived
+    'isPageArchived': task.isCurrentPageArchived,
+    'clipPage': task.clipPage
+    
 })
 
 // listeners

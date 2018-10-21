@@ -1,4 +1,4 @@
-import { notifyBackground, registContentHandler } from './lib'
+import { notifyBackground, registContentHandler, clipPage } from './lib'
 
 namespace contentScript {
     export function refreshCurrent () {
@@ -11,7 +11,8 @@ namespace contentScript {
 
 registContentHandler({
     "showDialog": (msg) => { alert(msg) },
-    "awake": contentScript.refreshCurrent
+    "awake": contentScript.refreshCurrent,
+    "clip": () => { clipPage() }
 })
 
 // main
