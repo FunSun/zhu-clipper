@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.1] - 2018-11-7
+### Fixed
+- 移除了不安全的依赖
+
 ## [1.2.0] - 2018-10-21
 ### Added
 - 增加了剪裁网页的功能
